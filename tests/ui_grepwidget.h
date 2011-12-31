@@ -4,7 +4,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'grepwidget.ui'
 **
-** Created: Fri Dec 30 16:36:32 2011
+** Created: Sat Dec 31 14:29:54 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -59,6 +59,7 @@ public:
     QSpacerItem *spacerItem3;
     KComboBox *replacementTemplateEdit;
     QLabel *label_4;
+    QCheckBox *ignoreCommentsCheck;
 
     void setupUi(QWidget *GrepWidget)
     {
@@ -217,19 +218,19 @@ public:
 
         spacerItem = new QSpacerItem(141, 16, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addItem(spacerItem, 8, 0, 1, 1);
+        gridLayout->addItem(spacerItem, 9, 0, 1, 1);
 
         spacerItem1 = new QSpacerItem(41, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addItem(spacerItem1, 8, 1, 1, 1);
+        gridLayout->addItem(spacerItem1, 9, 1, 1, 1);
 
         spacerItem2 = new QSpacerItem(151, 31, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addItem(spacerItem2, 8, 2, 1, 1);
+        gridLayout->addItem(spacerItem2, 9, 2, 1, 1);
 
         spacerItem3 = new QSpacerItem(361, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addItem(spacerItem3, 8, 3, 1, 3);
+        gridLayout->addItem(spacerItem3, 9, 3, 1, 3);
 
         replacementTemplateEdit = new KComboBox(GrepWidget);
         replacementTemplateEdit->setObjectName(QString::fromUtf8("replacementTemplateEdit"));
@@ -241,6 +242,12 @@ public:
         label_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(label_4, 2, 0, 1, 1);
+
+        ignoreCommentsCheck = new QCheckBox(GrepWidget);
+        ignoreCommentsCheck->setObjectName(QString::fromUtf8("ignoreCommentsCheck"));
+        ignoreCommentsCheck->setLayoutDirection(Qt::RightToLeft);
+
+        gridLayout->addWidget(ignoreCommentsCheck, 8, 0, 1, 1);
 
 #ifndef UI_QT_NO_SHORTCUT
         label_8->setBuddy(patternCombo);
@@ -352,6 +359,7 @@ public:
         replacementTemplateEdit->setToolTip(tr2i18n("Enter the replacement template.", 0));
 #endif // QT_NO_TOOLTIP
         label_4->setText(tr2i18n("Replacement Template:", 0));
+        ignoreCommentsCheck->setText(tr2i18n("Ignore comment lines:", 0));
     } // retranslateUi
 
 };
