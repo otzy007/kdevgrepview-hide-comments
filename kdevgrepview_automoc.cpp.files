@@ -1,0 +1,14 @@
+SOURCES:
+/home/oz/svn/kdevplatform/plugins/grepview/grepviewplugin.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepdialog.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepoutputmodel.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepoutputdelegate.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepjob.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepfindthread.cpp;/home/oz/svn/kdevplatform/plugins/grepview/grepoutputview.cpp;/home/oz/svn/kdevplatform/plugins/grepview/greputil.cpp
+MOC_COMPILE_DEFINITIONS:
+_BSD_SOURCE;_XOPEN_SOURCE=500;_BSD_SOURCE;QT_NO_STL;QT_NO_CAST_TO_ASCII;_REENTRANT;KDE_DEPRECATED_WARNINGS;KDE4_CMAKE_TOPLEVEL_DIR_LENGTH=12;QT_USE_FAST_CONCATENATION;QT_USE_FAST_OPERATOR_PLUS;QURL_NO_CAST_FROM_QSTRING;KDE_DEFAULT_DEBUG_AREA=9001
+MOC_DEFINITIONS:
+ -D_BSD_SOURCE -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DQT_NO_STL -DQT_NO_CAST_TO_ASCII -D_REENTRANT -DKDE_DEPRECATED_WARNINGS -DKDE4_CMAKE_TOPLEVEL_DIR_LENGTH=12 -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS -DQURL_NO_CAST_FROM_QSTRING -std=c++0x -DKDE_DEFAULT_DEBUG_AREA=9001
+MOC_INCLUDES:
+/home/oz/svn/kdevplatform;/usr/include;/usr/include/KDE;/usr/lib64/qt/include/QtXmlPatterns;/usr/lib64/qt/include/QtXml;/usr/lib64/qt/include/QtWebKit;/usr/lib64/qt/include/QtUiTools;/usr/lib64/qt/include/QtTest;/usr/lib64/qt/include/QtSvg;/usr/lib64/qt/include/QtSql;/usr/lib64/qt/include/QtScriptTools;/usr/lib64/qt/include/QtScript;/usr/lib64/qt/include/QtOpenGL;/usr/lib64/qt/include/QtNetwork;/usr/lib64/qt/include/QtMultimedia;/usr/lib64/qt/include/QtHelp;/usr/lib64/qt/include/QtDesigner;/usr/lib64/qt/include/QtDeclarative;/usr/lib64/qt/include/QtDBus;/usr/lib64/qt/include/Qt3Support;/usr/lib64/qt/include/QtGui;/usr/lib64/qt/include/QtCore;/usr/lib64/qt/include/Qt;/usr/lib64/qt/mkspecs/default;/usr/lib64/qt/include
+CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE:
+ON
+CMAKE_BINARY_DIR:
+/home/oz/svn/kdevplatform
+CMAKE_SOURCE_DIR:
+/home/oz/svn/kdevplatform

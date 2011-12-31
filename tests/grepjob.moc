@@ -1,0 +1,161 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'grepjob.h'
+**
+** Created: Fri Dec 30 16:36:15 2011
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../grepjob.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'grepjob.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_GrepJob[] = {
+
+ // content:
+       5,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      11,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       8,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+       9,    8,    8,    8, 0x05,
+      59,   42,    8,    8, 0x05,
+     112,  103,    8,    8, 0x25,
+     168,  152,    8,    8, 0x05,
+     206,  198,    8,    8, 0x25,
+     232,    8,    8,    8, 0x05,
+     288,  265,    8,    8, 0x05,
+     350,  333,    8,    8, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+     393,    8,    8,    8, 0x08,
+     416,  412,    8,    8, 0x08,
+
+ // methods: signature, parameters, type, tag, flags
+     439,    8,    8,    8, 0x00,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_GrepJob[] = {
+    "GrepJob\0\0clearMessage(KDevelop::IStatus*)\0"
+    ",message,timeout\0"
+    "showMessage(KDevelop::IStatus*,QString,int)\0"
+    ",message\0showMessage(KDevelop::IStatus*,QString)\0"
+    "message,timeout\0showErrorMessage(QString,int)\0"
+    "message\0showErrorMessage(QString)\0"
+    "hideProgress(KDevelop::IStatus*)\0"
+    ",minimum,maximum,value\0"
+    "showProgress(KDevelop::IStatus*,int,int,int)\0"
+    "filename,matches\0"
+    "foundMatches(QString,GrepOutputItem::List)\0"
+    "slotFindFinished()\0job\0testFinishState(KJob*)\0"
+    "slotWork()\0"
+};
+
+const QMetaObject GrepJob::staticMetaObject = {
+    { &KJob::staticMetaObject, qt_meta_stringdata_GrepJob,
+      qt_meta_data_GrepJob, 0 }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &GrepJob::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *GrepJob::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *GrepJob::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_GrepJob))
+        return static_cast<void*>(const_cast< GrepJob*>(this));
+    if (!strcmp(_clname, "KDevelop::IStatus"))
+        return static_cast< KDevelop::IStatus*>(const_cast< GrepJob*>(this));
+    if (!strcmp(_clname, "org.kdevelop.IStatus"))
+        return static_cast< KDevelop::IStatus*>(const_cast< GrepJob*>(this));
+    return KJob::qt_metacast(_clname);
+}
+
+int GrepJob::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = KJob::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: clearMessage((*reinterpret_cast< KDevelop::IStatus*(*)>(_a[1]))); break;
+        case 1: showMessage((*reinterpret_cast< KDevelop::IStatus*(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 2: showMessage((*reinterpret_cast< KDevelop::IStatus*(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 3: showErrorMessage((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 4: showErrorMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: hideProgress((*reinterpret_cast< KDevelop::IStatus*(*)>(_a[1]))); break;
+        case 6: showProgress((*reinterpret_cast< KDevelop::IStatus*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 7: foundMatches((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const GrepOutputItem::List(*)>(_a[2]))); break;
+        case 8: slotFindFinished(); break;
+        case 9: testFinishState((*reinterpret_cast< KJob*(*)>(_a[1]))); break;
+        case 10: slotWork(); break;
+        default: ;
+        }
+        _id -= 11;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void GrepJob::clearMessage(KDevelop::IStatus * _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void GrepJob::showMessage(KDevelop::IStatus * _t1, const QString & _t2, int _t3)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 3
+void GrepJob::showErrorMessage(const QString & _t1, int _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 5
+void GrepJob::hideProgress(KDevelop::IStatus * _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
+}
+
+// SIGNAL 6
+void GrepJob::showProgress(KDevelop::IStatus * _t1, int _t2, int _t3, int _t4)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
+void GrepJob::foundMatches(const QString & _t1, const GrepOutputItem::List & _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 7, _a);
+}
+QT_END_MOC_NAMESPACE
