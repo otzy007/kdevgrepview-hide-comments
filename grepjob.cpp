@@ -79,13 +79,19 @@ GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool e
             /*aici e cautarea */
             if (excludeComments) {
                 GrepOutputItem item = GrepOutputItem(change, data, false);
-                if(item.isText())
+                if (item.isText())
                 {
                     QString textt;
                     const KDevelop::SimpleRange rng = item.change()->m_range;
                     textt = item.text().left(rng.start.column).remove(leftspaces);
-            
-                    if((textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//")) == false)
+
+                    if (((filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java"))  &&
+                        (textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//"))) ||
+                        ((filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl")) && 
+                        textt.startsWith("#")) || ((filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm")) &&
+                            (textt.startsWith("<--"))))
+                        ;
+                    else
                         res << item;
                 }
             }
