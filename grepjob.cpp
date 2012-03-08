@@ -34,7 +34,7 @@
 using namespace KDevelop;
 
 
-GrepOutputItem::List grepFile(const QString &filename, const QRegExp &re)
+GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool excludeComments)
 {
     GrepOutputItem::List res;
     QFile file(filename);
@@ -42,8 +42,7 @@ GrepOutputItem::List grepFile(const QString &filename, const QRegExp &re)
     if(!file.open(QIODevice::ReadOnly))
         return res;
     int lineno = 0;
-    
-    // pentru mine aici
+         // pentru mine aici
     static const QRegExp leftspaces("^\\s*", Qt::CaseSensitive, QRegExp::RegExp);
     
     // detect encoding (unicode files can be feed forever, stops when confidence reachs 99%
@@ -78,17 +77,20 @@ GrepOutputItem::List grepFile(const QString &filename, const QRegExp &re)
                 SimpleRange(lineno, start, lineno, end),
                 re.cap(0), QString()));
             /*aici e cautarea */
-//             res << GrepOutputItem(change, data, false);
-            GrepOutputItem item = GrepOutputItem(change, data, false);
-            if(item.isText())
-            {
-                QString textt;
-                const KDevelop::SimpleRange rng = item.change()->m_range;
-                textt = item.text().left(rng.start.column).remove(leftspaces);
-        
-                if((textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//")) == false)
-                    res << item;
+            if (excludeComments) {
+                GrepOutputItem item = GrepOutputItem(change, data, false);
+                if(item.isText())
+                {
+                    QString textt;
+                    const KDevelop::SimpleRange rng = item.change()->m_range;
+                    textt = item.text().left(rng.start.column).remove(leftspaces);
+            
+                    if((textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//")) == false)
+                        res << item;
+                }
             }
+            else
+                res << GrepOutputItem(change, data, false);
             offset = end;
         }
         lineno++;
@@ -197,7 +199,7 @@ void GrepJob::slotWork()
                 emit showProgress(this, 0, m_fileList.length(), m_fileIndex);
                 if(m_fileIndex < m_fileList.length()) {
                     QString file = m_fileList[m_fileIndex].toLocalFile();
-                    GrepOutputItem::List items = grepFile(file, m_regExp);
+                    GrepOutputItem::List items = grepFile(file, m_regExp, m_excludeCommentsFlag);
 
                     if(!items.isEmpty())
                     {
@@ -302,6 +304,11 @@ void GrepJob::setDirectoryChoice(const QList<KUrl>& choice)
 void GrepJob::setCaseSensitive(bool caseSensitive)
 {
     m_caseSensitiveFlag = caseSensitive;
+}
+
+void GrepJob::setExcludeComments(bool excludeComments)
+{
+    m_excludeCommentsFlag = excludeComments;
 }
 
 void GrepJob::setRecursive(bool recursive)

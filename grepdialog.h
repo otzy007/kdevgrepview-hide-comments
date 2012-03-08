@@ -47,6 +47,7 @@ public:
     bool regexpFlag() const;
     bool recursiveFlag() const;
     bool caseSensitiveFlag() const;
+    bool excludeCommentsFlags() const;
 
     void start();
     

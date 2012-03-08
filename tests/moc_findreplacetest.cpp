@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'findreplacetest.h'
 **
-** Created: Fri Dec 30 16:36:16 2011
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
+** Created: Thu Mar 8 09:20:29 2012
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "findreplacetest.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'findreplacetest.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.7.4. It"
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_FindReplaceTest[] = {
 
  // content:
-       5,       // revision
+       6,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -48,9 +48,31 @@ static const char qt_meta_stringdata_FindReplaceTest[] = {
     "testReplace_data()\0"
 };
 
+void FindReplaceTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        FindReplaceTest *_t = static_cast<FindReplaceTest *>(_o);
+        switch (_id) {
+        case 0: _t->initTestCase(); break;
+        case 1: _t->cleanupTestCase(); break;
+        case 2: _t->testFind(); break;
+        case 3: _t->testFind_data(); break;
+        case 4: _t->testReplace(); break;
+        case 5: _t->testReplace_data(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObjectExtraData FindReplaceTest::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
 const QMetaObject FindReplaceTest::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_FindReplaceTest,
-      qt_meta_data_FindReplaceTest, 0 }
+      qt_meta_data_FindReplaceTest, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -76,15 +98,8 @@ int FindReplaceTest::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: initTestCase(); break;
-        case 1: cleanupTestCase(); break;
-        case 2: testFind(); break;
-        case 3: testFind_data(); break;
-        case 4: testReplace(); break;
-        case 5: testReplace_data(); break;
-        default: ;
-        }
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 6;
     }
     return _id;

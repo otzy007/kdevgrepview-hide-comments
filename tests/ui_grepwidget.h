@@ -4,8 +4,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'grepwidget.ui'
 **
-** Created: Sat Dec 31 14:29:54 2011
-**      by: Qt User Interface Compiler version 4.7.4
+** Created: Thu Mar 8 09:23:15 2012
+**      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -33,6 +33,7 @@ class Ui_GrepWidget
 {
 public:
     QGridLayout *gridLayout;
+    QLabel *label;
     QLabel *label_8;
     KComboBox *patternCombo;
     QLabel *label_9;
@@ -43,23 +44,22 @@ public:
     QLabel *label_11;
     QCheckBox *caseSensitiveCheck;
     QLabel *label_5;
+    QSpacerItem *spacerItem;
     KUrlRequester *directoryRequester;
     KPushButton *syncButton;
     QLabel *label_6;
     QCheckBox *recursiveCheck;
-    QLabel *label_7;
+    QLabel *limitToProjectLabel;
     QCheckBox *limitToProjectCheck;
-    QLabel *label;
     KComboBox *filesCombo;
     QLabel *label_2;
     KComboBox *excludeCombo;
-    QSpacerItem *spacerItem;
     QSpacerItem *spacerItem1;
     QSpacerItem *spacerItem2;
     QSpacerItem *spacerItem3;
     KComboBox *replacementTemplateEdit;
     QLabel *label_4;
-    QCheckBox *ignoreCommentsCheck;
+    QCheckBox *excludeCommentsCheck;
 
     void setupUi(QWidget *GrepWidget)
     {
@@ -75,6 +75,12 @@ public:
         GrepWidget->setMaximumSize(QSize(16777215, 16777215));
         gridLayout = new QGridLayout(GrepWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label = new QLabel(GrepWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(label, 6, 0, 1, 1);
+
         label_8 = new QLabel(GrepWidget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -144,6 +150,10 @@ public:
 
         gridLayout->addWidget(label_5, 4, 0, 1, 1);
 
+        spacerItem = new QSpacerItem(41, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout->addItem(spacerItem, 9, 1, 1, 1);
+
         directoryRequester = new KUrlRequester(GrepWidget);
         directoryRequester->setObjectName(QString::fromUtf8("directoryRequester"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -176,11 +186,11 @@ public:
 
         gridLayout->addWidget(recursiveCheck, 5, 1, 1, 1);
 
-        label_7 = new QLabel(GrepWidget);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        limitToProjectLabel = new QLabel(GrepWidget);
+        limitToProjectLabel->setObjectName(QString::fromUtf8("limitToProjectLabel"));
+        limitToProjectLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label_7, 5, 2, 1, 1);
+        gridLayout->addWidget(limitToProjectLabel, 5, 2, 1, 1);
 
         limitToProjectCheck = new QCheckBox(GrepWidget);
         limitToProjectCheck->setObjectName(QString::fromUtf8("limitToProjectCheck"));
@@ -189,12 +199,6 @@ public:
         limitToProjectCheck->setChecked(true);
 
         gridLayout->addWidget(limitToProjectCheck, 5, 3, 1, 1);
-
-        label = new QLabel(GrepWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(label, 6, 0, 1, 1);
 
         filesCombo = new KComboBox(GrepWidget);
         filesCombo->setObjectName(QString::fromUtf8("filesCombo"));
@@ -216,13 +220,9 @@ public:
 
         gridLayout->addWidget(excludeCombo, 7, 1, 1, 5);
 
-        spacerItem = new QSpacerItem(141, 16, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        spacerItem1 = new QSpacerItem(141, 16, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addItem(spacerItem, 9, 0, 1, 1);
-
-        spacerItem1 = new QSpacerItem(41, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout->addItem(spacerItem1, 9, 1, 1, 1);
+        gridLayout->addItem(spacerItem1, 9, 0, 1, 1);
 
         spacerItem2 = new QSpacerItem(151, 31, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
@@ -243,27 +243,27 @@ public:
 
         gridLayout->addWidget(label_4, 2, 0, 1, 1);
 
-        ignoreCommentsCheck = new QCheckBox(GrepWidget);
-        ignoreCommentsCheck->setObjectName(QString::fromUtf8("ignoreCommentsCheck"));
-        ignoreCommentsCheck->setLayoutDirection(Qt::RightToLeft);
+        excludeCommentsCheck = new QCheckBox(GrepWidget);
+        excludeCommentsCheck->setObjectName(QString::fromUtf8("excludeCommentsCheck"));
 
-        gridLayout->addWidget(ignoreCommentsCheck, 8, 0, 1, 1);
+        gridLayout->addWidget(excludeCommentsCheck, 8, 1, 1, 1);
 
 #ifndef UI_QT_NO_SHORTCUT
+        label->setBuddy(filesCombo);
         label_8->setBuddy(patternCombo);
         label_9->setBuddy(templateEdit);
         label_10->setBuddy(regexCheck);
         label_11->setBuddy(caseSensitiveCheck);
         label_5->setBuddy(directoryRequester);
         label_6->setBuddy(recursiveCheck);
-        label_7->setBuddy(limitToProjectCheck);
-        label->setBuddy(filesCombo);
+        limitToProjectLabel->setBuddy(limitToProjectCheck);
         label_2->setBuddy(excludeCombo);
         label_4->setBuddy(replacementTemplateEdit);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(patternCombo, templateEdit);
         QWidget::setTabOrder(templateEdit, templateTypeCombo);
-        QWidget::setTabOrder(templateTypeCombo, regexCheck);
+        QWidget::setTabOrder(templateTypeCombo, replacementTemplateEdit);
+        QWidget::setTabOrder(replacementTemplateEdit, regexCheck);
         QWidget::setTabOrder(regexCheck, caseSensitiveCheck);
         QWidget::setTabOrder(caseSensitiveCheck, directoryRequester);
         QWidget::setTabOrder(directoryRequester, syncButton);
@@ -280,6 +280,7 @@ public:
     void retranslateUi(QWidget *GrepWidget)
     {
         GrepWidget->setWindowTitle(tr2i18n("Find-Replace In Files", 0));
+        label->setText(tr2i18n("Files:", 0));
         label_8->setText(tr2i18n("Pattern:", 0));
 #ifndef UI_QT_NO_TOOLTIP
         patternCombo->setToolTip(tr2i18n("Enter the regular expression you want to search for here.", 0));
@@ -339,9 +340,8 @@ public:
 #endif // QT_NO_TOOLTIP
         label_6->setText(tr2i18n("Recursive:", 0));
         recursiveCheck->setText(QString());
-        label_7->setText(tr2i18n("Limit to project files:", 0));
+        limitToProjectLabel->setText(tr2i18n("Limit to project files:", 0));
         limitToProjectCheck->setText(QString());
-        label->setText(tr2i18n("Files:", 0));
 #ifndef UI_QT_NO_TOOLTIP
         filesCombo->setToolTip(tr2i18n("Files filter.", 0));
 #endif // QT_NO_TOOLTIP
@@ -359,7 +359,7 @@ public:
         replacementTemplateEdit->setToolTip(tr2i18n("Enter the replacement template.", 0));
 #endif // QT_NO_TOOLTIP
         label_4->setText(tr2i18n("Replacement Template:", 0));
-        ignoreCommentsCheck->setText(tr2i18n("Ignore comment lines:", 0));
+        excludeCommentsCheck->setText(tr2i18n("Exclude Comments", 0));
     } // retranslateUi
 
 };

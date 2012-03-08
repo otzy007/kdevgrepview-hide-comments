@@ -243,10 +243,11 @@ QMenu* GrepDialog::createSyncButtonMenu()
 
 void GrepDialog::directoryChanged(const QString& dir)
 {
-    setEnableProjectBox(false);
     KUrl currentUrl = dir;
-    if( !currentUrl.isValid() )
+    if( !currentUrl.isValid() ) {
+        setEnableProjectBox(false);
         return;
+    }
     
     bool projectAvailable = true;
     
@@ -286,7 +287,7 @@ void GrepDialog::templateTypeComboActivated(int index)
 void GrepDialog::setEnableProjectBox(bool enable)
 {
     limitToProjectCheck->setEnabled(enable);
-    if (!enable) limitToProjectCheck->setChecked(false);
+    limitToProjectLabel->setEnabled(enable);
 }
 
 void GrepDialog::setPattern(const QString &pattern)
@@ -331,6 +332,7 @@ QString GrepDialog::excludeString() const
 
 bool GrepDialog::useProjectFilesFlag() const
 {
+    if (!limitToProjectCheck->isEnabled()) return false;
     return limitToProjectCheck->isChecked();
 }
 
@@ -347,6 +349,11 @@ bool GrepDialog::recursiveFlag() const
 bool GrepDialog::caseSensitiveFlag() const
 {
     return caseSensitiveCheck->isChecked();
+}
+
+bool GrepDialog::excludeCommentsFlags() const
+{
+    return excludeCommentsCheck->isChecked();
 }
 
 void GrepDialog::patternComboEditTextChanged( const QString& text)
@@ -459,6 +466,7 @@ void GrepDialog::performAction(KDialog::ButtonCode button)
     job->setRegexpFlag( regexpFlag() );
     job->setRecursive( recursiveFlag() );
     job->setCaseSensitive( caseSensitiveFlag() );
+    job->setExcludeComments( excludeCommentsFlags() );
 
     ICore::self()->runController()->registerJob(job);
     

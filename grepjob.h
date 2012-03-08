@@ -61,6 +61,7 @@ public:
     void setRecursive(bool recursive);
     void setRegexpFlag(bool regexpFlag);
     void setCaseSensitive(bool caseSensitive);
+    void setExcludeComments(bool excludeComments);
     void setProjectFilesFlag(bool projectFilesFlag);
 
     virtual void start();
@@ -112,12 +113,13 @@ private:
     bool m_regexpFlag;
     bool m_recursiveFlag;
     bool m_caseSensitiveFlag;
+    bool m_excludeCommentsFlag;
     
     bool m_findSomething;
 };
 
 //FIXME: this function is used externally only for tests, find a way to keep it 
 //       static for a regular compilation
-GrepOutputItem::List grepFile(const QString &filename, const QRegExp &re);
+GrepOutputItem::List grepFile(const QString &filename, const QRegExp &re, bool excludeComments);
 
 #endif
