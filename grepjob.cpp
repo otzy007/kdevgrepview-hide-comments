@@ -60,15 +60,18 @@ GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool e
     // Sets the comment type based on the file extension
     QStringList comments = QStringList();
     
-    if (filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java") || filename.contains(".php"))
+    if (filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || 
+        filename.contains(".java") || filename.contains(".php") || filename.contains(".js") ||
+        filename.contains(".css"))
         comments << "//" << "/*" << "* ";
     
-    if (filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl") ||
-        filename.contains("Makefile") || filename.contains(".cmake"))
+    if (filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || 
+        filename.contains(".pl") || filename.contains("Makefile") || filename.contains(".cmake") ||
+        filename.contains("configure") || filename.contains(".am") || filename.contains(".in"))
         comments << "#";
     
     if (filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm"))
-        comments << "<--";
+        comments << "<!--";
         
     while( !stream.atEnd() )
     {
@@ -98,21 +101,12 @@ GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool e
                 {
                     QString textt;
                     const KDevelop::SimpleRange rng = item.change()->m_range;
-                    textt = item.text().left(rng.start.column).remove(leftspaces);
-
-//                     if (((filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java"))  &&
-//                         (textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//"))) ||
-//                         ((filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl") || 
-//                         filename.contains("Makefile") || filename.contains(".mk")) && textt.startsWith("#")) ||
-//                         ((filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm")) && (textt.startsWith("<--"))))
-//                         ;
-                    
+                    textt = item.text().left(rng.start.column).remove(leftspaces);                    
                     bool isComment = false;
                     for (int index = 0; index < (int) comments.size(); index++) {
                         if (textt.startsWith(comments[index]))
                             isComment = true;
                     }
-                    
                     if (!isComment)
                         res << item;
                 }

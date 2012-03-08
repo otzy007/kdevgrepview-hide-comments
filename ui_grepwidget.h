@@ -4,7 +4,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'grepwidget.ui'
 **
-** Created: Thu Mar 8 12:45:29 2012
+** Created: Thu Mar 8 15:19:28 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
