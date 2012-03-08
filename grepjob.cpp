@@ -22,6 +22,7 @@
 #include <QRegExp>
 #include <QTextDocument>
 #include <QTextStream>
+#include <QStringList>
 
 #include <klocale.h>
 #include <kencodingprober.h>
@@ -55,6 +56,20 @@ GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool e
     file.seek(0);
     QTextStream stream(&file);
     stream.setCodec(prober.encoding());
+    
+    // Sets the comment type based on the file extension
+    QStringList comments = QStringList();
+    
+    if (filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java") || filename.contains(".php"))
+        comments << "//" << "/*" << "* ";
+    
+    if (filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl") ||
+        filename.contains("Makefile") || filename.contains(".cmake"))
+        comments << "#";
+    
+    if (filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm"))
+        comments << "<--";
+        
     while( !stream.atEnd() )
     {
         QString data = stream.readLine();
@@ -85,13 +100,20 @@ GrepOutputItem::List grepFile(const QString& filename, const QRegExp& re, bool e
                     const KDevelop::SimpleRange rng = item.change()->m_range;
                     textt = item.text().left(rng.start.column).remove(leftspaces);
 
-                    if (((filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java"))  &&
-                        (textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//"))) ||
-                        ((filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl")) && 
-                        textt.startsWith("#")) || ((filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm")) &&
-                            (textt.startsWith("<--"))))
-                        ;
-                    else
+//                     if (((filename.contains(".c") || filename.contains(".h") || filename.contains(".moc") || filename.contains(".java"))  &&
+//                         (textt.startsWith("* ") || textt.startsWith("/*") || textt.startsWith("** ") || textt.startsWith("//"))) ||
+//                         ((filename.contains(".py") || filename.contains(".rb") || filename.contains(".sh") || filename.contains(".pl") || 
+//                         filename.contains("Makefile") || filename.contains(".mk")) && textt.startsWith("#")) ||
+//                         ((filename.contains(".xml") || filename.contains(".ui") || filename.contains(".htm")) && (textt.startsWith("<--"))))
+//                         ;
+                    
+                    bool isComment = false;
+                    for (int index = 0; index < (int) comments.size(); index++) {
+                        if (textt.startsWith(comments[index]))
+                            isComment = true;
+                    }
+                    
+                    if (!isComment)
                         res << item;
                 }
             }
